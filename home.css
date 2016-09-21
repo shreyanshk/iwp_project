@@ -7,14 +7,24 @@ div#topbar {
     border: 3px solid black;
 }
 
-p#topbarleft{
+div#topbarleft {
   position: absolute;
   left: 0px;
+  height: 100%;
   background-color: yellow;
 }
 
-p#topbarright{
+div#topbarright {
   position: absolute;
   right: 0px;
+  height: 100%;
   background-color: yellow;
+}
+
+div#loginsquare {
+  -webkit-align-self: center;
+  align-self: center;
+  width: 256px;
+  height: 256px;
+  background-color: green;
 }
