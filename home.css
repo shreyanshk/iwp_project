@@ -7,14 +7,14 @@ div#topbar {
     border: 3px solid black;
 }
 
-div#topbarleft {
+div#barleft {
   position: absolute;
   left: 0px;
   height: 100%;
   background-color: yellow;
 }
 
-div#topbarright {
+div#barright {
   position: absolute;
   right: 0px;
   height: 100%;
@@ -30,4 +30,13 @@ div#loginsquare {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+div#bottombar {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    left: 5px;
+    height: 40px;
+    border: 3px solid black;
 }
