@@ -20,8 +20,9 @@
       $_SESSION['username'] = $row['username'];
     }
   }
-  if ($validid) { //check username & pass
-    echo "You have been logged in!";
+  if ($validid) {
+    //echo "You have been logged in!";
+    header('Location: home.php');
   } else {
     echo "Invalid userid password combo";
     session_destroy();

@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if (isset($_SESSION['username'])) {
+    echo "Please wait while we redirect you";
+    header('Location: home.php');
+  }
+?>
+
 <html>
   <head>
     <title>
