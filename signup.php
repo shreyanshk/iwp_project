@@ -20,31 +20,31 @@ if (isset($_SESSION['username'])) {
       <form action="dosignup.php" method="POST">
         <p>
           First name<br>
-          <input type='text' id='fname'>
+          <input type='text' name='fname'>
         </p>
         <p>
           Last name<br>
-          <input type='text' id='lname'>
+          <input type='text' name='lname'>
         </p>
         <p>
           Preferred username<br>
-          <input type='text' id='username'>
+          <input type='text' name='username'>
         </p>
         <p>
           Password<br>
-          <input type='password' id='password'>
+          <input type='password' name='password'>
         </p>
         <p>
           Retype password<br>
-          <input type='text' id='cnfpassword'>
+          <input type='password' name='cnfpassword'>
         </p>
         <p>
           E-Mail address<br>
-          <input type='text' id='email'>
+          <input type='text' name='email'>
         </p>
         <p>
           Your occupation<br>
-          <select id='occupation'>
+          <select name='occupation'>
             <option value='student'>Student</option>
             <option value='teacher'>Teacher</option>
           </select>

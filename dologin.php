@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if (isset($_POST['username']) & isset($_POST['password']) & (!isset($_SESSION['username']))) {
+  if (isset($_POST['username']) && isset($_POST['password']) && (!isset($_SESSION['username']))) {
     $username = $_POST['username'];
     $passhash = md5($_POST['password']);
     $userdb = new PDO('sqlite:/srv/http/iwp_project/users.sqlite');
