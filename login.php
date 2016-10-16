@@ -50,7 +50,7 @@
               <br>
               <input type='password' id='password' name='password' class="form-control"></input>
               <br>
-              <input type='submit' id='submitbutton'></input>
+              <input type='submit' id='submitbutton' value='Sign in / Sign up'></input>
             </form>
           </div>
       </div>

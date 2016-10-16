@@ -1,0 +1,18 @@
+#topbar {
+  position: fixed;
+  right: 0px;
+  left: 0px;
+  height: 60px;
+  top: 0px;
+  background-color: red;
+  opacity: 1;
+}
+#topbarmid {
+  font-size:30px;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
