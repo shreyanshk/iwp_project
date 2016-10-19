@@ -15,21 +15,51 @@ if (isset($_SESSION['username'])) {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
   $username = $_POST['username'];
-  $password = $_POST['password'];
-  $cnfpassword = $_POST['cnfpassword'];
+  $passhash = md5($_POST['password']);
+  $cnfpasshash = md5($_POST['cnfpassword']);
+  if (!($passhash === $cnfpasshash)) {
+    echo "Your passwords do not match! Please click back and retype password fields.";
+    exit();
+  }
   $email = $_POST['email'];
-  $occupation = $_POST['occupation'];
-  $queryun = "select * from users where username = '".$username."'";
-  $queryem = "select * from users where email = '".$email."'";
-  $resun = ($userdb->query($queryun))->rowCount();
-  $resem = ($userdb->query($queryem))->rowCount();
-  echo $resun;
-  /*if (empty($resem)) {
+  $group = $_POST['occupation'];
+  $queryun = "select count(*) from users where username = '$username'";
+  $queryem = "select count(*) from users where email = '$email'";
+  $resun = ($userdb->query($queryun))->fetchColumn();
+  $resem = ($userdb->query($queryem))->fetchColumn();
+  if (!empty($resem)) {
     echo "This email address is already registered";
-  } else if (empty($resun)) {
+  } else if (!empty($resun)) {
     echo "This username already exist";
   } else {
-    echo "I'm here";
-  }*/
+    $userdb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $ins = "insert into users (
+      uuid, fname, lname, email, passhash, group, username
+      ) values (
+      :uuid, :fname, :lname, :email, :passhash, :group, :username
+      )";
+    $res = $userdb->prepare($ins);
+    if ($res == false) {
+      echo "This didn't work.";
+    }
+/*    $res->bindParam(':fname', $fname);
+    $res->bindParam(':lname', $lname, PDO::PARAM_STR);
+    $res->bindParam(':email', $email, PDO::PARAM_STR);
+    $res->bindParam(':passhash', $passhash, PDO::PARAM_STR);
+    $res->bindParam(':group', $group, PDO::PARAM_STR);
+    $res->bindParam(':username', $username, PDO::PARAM_STR);*/
+    $res->execute(array(
+      "fname" => $fname,
+      "lname" => $lname,
+      "email" => $email,
+      "passhash" => $passhash,
+      "group" => $group,
+      "username" => $username
+    ));
+    echo $res->rowCount();
+    echo "Your details have been saved $fname! Now, You can log in.";
+  }
+} else {
+  echo "Invalid Request";
 }
 ?>
