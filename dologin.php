@@ -25,7 +25,8 @@
       //echo "You have been logged in!";
       header('Location: home.php');
     } else {
-      echo "Invalid userid password combo";
+      $redir = "signup.php?username=".$username;
+      header("Location: $redir");
       session_destroy();
     }
   } else if (isset($_SESSION['username'])) {
