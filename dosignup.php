@@ -34,20 +34,20 @@ if (isset($_SESSION['username'])) {
   } else {
     $userdb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $ins = "insert into users (
-      uuid, fname, lname, email, passhash, group, username
+      uuid, fname, lname, email, passhash, 'group', username
       ) values (
-      :uuid, :fname, :lname, :email, :passhash, :group, :username
+      null, :fname, :lname, :email, :passhash, :group, :username
       )";
     $res = $userdb->prepare($ins);
     if ($res == false) {
       echo "This didn't work.";
     }
-/*    $res->bindParam(':fname', $fname);
+    $res->bindParam(':fname', $fname);
     $res->bindParam(':lname', $lname, PDO::PARAM_STR);
     $res->bindParam(':email', $email, PDO::PARAM_STR);
     $res->bindParam(':passhash', $passhash, PDO::PARAM_STR);
     $res->bindParam(':group', $group, PDO::PARAM_STR);
-    $res->bindParam(':username', $username, PDO::PARAM_STR);*/
+    $res->bindParam(':username', $username, PDO::PARAM_STR);
     $res->execute(array(
       "fname" => $fname,
       "lname" => $lname,
@@ -56,7 +56,6 @@ if (isset($_SESSION['username'])) {
       "group" => $group,
       "username" => $username
     ));
-    echo $res->rowCount();
     echo "Your details have been saved $fname! Now, You can log in.";
   }
 } else {
