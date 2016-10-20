@@ -36,7 +36,7 @@
       <div>
         <img src="vitlogo.png" id='vitlogo'>
           <div>
-            <form id='loginform' action='dologin.php' method='POST'>
+            <form id='loginform' action='dologin.php' method='POST' onsubmit="return verify()">
               <h2>
                 Sign in:
               </h2>
