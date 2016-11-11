@@ -4,6 +4,9 @@
   <body>
     <p> Hi,
       <?php
+       include 'manager.php';
+      ?>
+      <?php
         session_start();
         echo $_SESSION['username'];
       ?>

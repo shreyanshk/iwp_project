@@ -1,4 +1,7 @@
 <?php
+ include 'manager.php';
+?>
+<?php
   session_start();
   if (isset($_POST['username']) && isset($_POST['password']) && (!isset($_SESSION['username']))) {
     $username = $_POST['username'];
@@ -28,6 +31,10 @@
     }
     if ($validcombo) {
       //echo "You have been logged in!";
+      $time = new DateTime();
+      $curtime = $time->getTimestamp();
+      $_SESSION['logintime'] = $curtime;
+      $_SESSION['lastactive'] = $_SESSION['logintime'];
       header('Location: home.php');
     } else if ($validid) {
       echo "Invalid password. Please try to login again.";
